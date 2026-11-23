@@ -1,4 +1,4 @@
-# Mini Task Management API
+pp# Mini Task Management API
 **Version 7.0.0**
 
 🚀 **Live API - Test It Now:** https://mini-task-management-api-version-7-0-0.onrender.com/docs
@@ -35,6 +35,6 @@ API Developer | Python, FastAPI, Node.js, React.js
 Johannesburg, South Africa
 
 GitHub: https://github.com/muvhangos
-LinkedIn: [Paste your LinkedIn link here]
+LinkedIn: https://www.linkedin.com/in/samuel-muvhango-78821a112
 
 **Open to: Junior Backend Developer / Junior API Developer roles**
