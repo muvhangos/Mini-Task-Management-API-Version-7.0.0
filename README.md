@@ -27,3 +27,14 @@ A RESTful Task Management API built with Python and FastAPI. This project provid
 - JWT Auth (Register / Login)
 - Pagination
 - PostgreSQL
+
+## Developer
+
+**Samuel Muvhango**
+API Developer | Python, FastAPI, Node.js, React.js
+Johannesburg, South Africa
+
+GitHub: https://github.com/muvhangos
+LinkedIn: [Paste your LinkedIn link here]
+
+**Open to: Junior Backend Developer / Junior API Developer roles**
