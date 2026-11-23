@@ -1,0 +1,29 @@
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local SQLite database
+tasks.db
+*.db
+
+# Safety backups
+main_backup.py
+main_before_*.py
+main_v5_backup_*.py
+main_v6_backup_*.py
+
+# Environment variables and secrets
+.env
+.env.*
+
+# IDE settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
