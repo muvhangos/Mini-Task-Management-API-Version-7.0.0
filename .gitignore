@@ -27,3 +27,8 @@ main_v6_backup_*.py
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Pytest cache and test reports
+.pytest_cache/
+.coverage
+htmlcov/
