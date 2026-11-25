@@ -84,7 +84,6 @@ def create_task(
     task: TaskCreate,
     db: Session = Depends(get_db)
 ):
-
     new_task = TaskModel(
         title=task.title,
         description=task.description,
@@ -107,13 +106,34 @@ def create_task(
 
 @app.get("/tasks", response_model=TaskListResponse)
 def get_tasks(db: Session = Depends(get_db)):
-
     tasks = db.query(TaskModel).order_by(TaskModel.id).all()
 
     return {
         "total_tasks": len(tasks),
         "tasks": tasks
     }
+
+
+# ==========================================
+# GET SINGLE TASK BY ID
+# ==========================================
+
+@app.get("/tasks/{task_id}", response_model=TaskResponse)
+def get_task(
+    task_id: int,
+    db: Session = Depends(get_db)
+):
+    task = db.query(TaskModel).filter(
+        TaskModel.id == task_id
+    ).first()
+
+    if task is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Task not found"
+        )
+
+    return task
 
 
 # ==========================================
@@ -126,7 +146,6 @@ def update_task(
     updated_task: TaskCreate,
     db: Session = Depends(get_db)
 ):
-
     task = db.query(TaskModel).filter(
         TaskModel.id == task_id
     ).first()
@@ -159,7 +178,6 @@ def delete_task(
     task_id: int,
     db: Session = Depends(get_db)
 ):
-
     task = db.query(TaskModel).filter(
         TaskModel.id == task_id
     ).first()
