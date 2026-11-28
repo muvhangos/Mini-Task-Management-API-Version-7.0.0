@@ -32,3 +32,10 @@ Thumbs.db
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Version 8 local migration and backup files
+backup_*/
+migrate_v8.py
+README_before_*.md
+
+database_before_*.py

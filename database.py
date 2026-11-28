@@ -1,26 +1,54 @@
+﻿import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# SQLite database file
-DATABASE_URL = "sqlite:///./tasks.db"
 
-# Create database engine
+# Use SQLite locally unless DATABASE_URL is configured.
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+
+if not DATABASE_URL:
+    DATABASE_URL = "sqlite:///./tasks.db"
+
+# Configure PostgreSQL URLs for Psycopg 3.
+elif DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgres://",
+        "postgresql+psycopg://",
+        1
+    )
+
+elif DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgresql://",
+        "postgresql+psycopg://",
+        1
+    )
+
+# SQLite requires this connection argument.
+connect_args = {}
+
+if DATABASE_URL.startswith("sqlite"):
+    connect_args = {"check_same_thread": False}
+
+
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}
+    connect_args=connect_args,
+    pool_pre_ping=True
 )
 
-# Create database sessions
+
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
 )
 
-# Base class for database models
+
 Base = declarative_base()
 
-# Database session dependency
+
 def get_db():
     db = SessionLocal()
 

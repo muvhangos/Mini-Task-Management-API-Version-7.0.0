@@ -11,6 +11,9 @@ jobs:
     name: Run Pytest
     runs-on: ubuntu-latest
 
+    env:
+      SECRET_KEY: ci-only-test-secret-key-not-for-production
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
